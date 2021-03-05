@@ -5,57 +5,162 @@
 
     <meta name="robots" content="noindex,nofollow">
     <title>AJAX Pet Starter</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
     <script type="text/javascript">
         $("document").ready(function () {
 
-            //hide 2nd and third question on page load
             $("#pet_likes").hide();
             $("#pet_eats").hide();
+            $("#pet_name").hide();
+            $("button").hide();
 
             $("#pet_feels").click(function (e) {
-                //alert("feels is clicked!");
+                //alert("Feels is clicked!")
                 $("#pet_likes").slideDown(200);
-            });
-
-
+            })
             $("#pet_likes").click(function (e) {
-                //alert("feels is clicked!");
+                //alert("Feels is clicked!")
                 $("#pet_eats").slideDown(200);
-            });
-
-
-
+            })
+            $("#pet_eats").click(function (e) {
+                //alert("Feels is clicked!")
+                $("#pet_name").slideDown(200);
+            })
+            $("#pet_name").click(function (e) {
+                //alert("Feels is clicked!")
+                $("button").slideDown(200);
+            })
 
             $('#myForm').submit(function (e) {
                 //alert("hi!  I'm jQuery!");
 
-                //here are the selections made by the user
+                //Here are the selections made by the user.
                 let feels = $("input[name=feels]:checked").val();
                 let likes = $("input[name=likes]:checked").val();
                 let eats = $("input[name=eats]:checked").val();
-                let pet = "";//will store our pet
+                let names = $("input[name=names]").val();
+                let pet = ""; //will store our pet.
+                let pic = "";
+                //alert(eats);
 
-
-                if (feels == "fluffy" && likes == "petted" && eats == "carrots") {
+                //Fluffy Pets
+                if (feels == "fluffy" && likes == "petted" && eats == "plants") {
                     pet = "rabbit";
                 }
-
-                if (feels == "scaly" && likes == "ridden" && eats == "pets") {
-                    pet = "velociraptor";
+                if (feels == "fluffy" && likes == "petted" && eats == "meat") {
+                    pet = "dog";
+                }
+                if (feels == "fluffy" && likes == "petted" && eats == "everything") {
+                    pet = "bear";
+                }
+                if (feels == "fluffy" && likes == "ridden" && eats == "plants") {
+                    pet = "horse";
+                }
+                if (feels == "fluffy" && likes == "ridden" && eats == "meat") {
+                    pet = "sabertooth";
+                }
+                if (feels == "fluffy" && likes == "ridden" && eats == "everything") {
+                    pet = "gorilla";
+                }
+                if (feels == "fluffy" && likes == "alone" && eats == "plants") {
+                    pet = "bull";
+                }
+                if (feels == "fluffy" && likes == "alone" && eats == "meat") {
+                    pet = "cat";
+                }
+                if (feels == "fluffy" && likes == "alone" && eats == "everything") {
+                    pet = "hippo";
                 }
 
-                //create text to tell user about pet!
+                //Scaly Pets
+                if (feels == "scaly" && likes == "petted" && eats == "plants") {
+                    pet = "stegosaurus";
+                }
+                if (feels == "scaly" && likes == "petted" && eats == "meat") {
+                    pet = "crocodile";
+                }
+                if (feels == "scaly" && likes == "petted" && eats == "everything") {
+                    pet = "iguana";
+                }
+                if (feels == "scaly" && likes == "ridden" && eats == "plants") {
+                    pet = "brachiosaurus";
+                }
+                if (feels == "scaly" && likes == "ridden" && eats == "meat") {
+                    pet = "velociraptor";
+                }
+                if (feels == "scaly" && likes == "ridden" && eats == "everything") {
+                    pet = "tortoise";
+                }
+                if (feels == "scaly" && likes == "alone" && eats == "plants") {
+                    pet = "snapping-turtle";
+                }
+                if (feels == "scaly" && likes == "alone" && eats == "meat") {
+                    pet = "cobra";
+                }
+                if (feels == "scaly" && likes == "alone" && eats == "everything") {
+                    pet = "komodo-dragon";
+                }
+
+                //Feathery Pets
+                if (feels == "feathery" && likes == "petted" && eats == "plants") {
+                    pet = "parrot";
+                }
+                if (feels == "feathery" && likes == "petted" && eats == "meat") {
+                    pet = "eagle";
+                }
+                if (feels == "feathery" && likes == "petted" && eats == "everything") {
+                    pet = "raven";
+                }
+                if (feels == "feathery" && likes == "ridden" && eats == "plants") {
+                    pet = "ostrich";
+                }
+                if (feels == "feathery" && likes == "ridden" && eats == "meat") {
+                    pet = "pterodactyl";
+                }
+                if (feels == "feathery" && likes == "ridden" && eats == "everything") {
+                    pet = "griffin";
+                }
+                if (feels == "feathery" && likes == "alone" && eats == "plants") {
+                    pet = "elephant-bird";
+                }
+                if (feels == "feathery" && likes == "alone" && eats == "meat") {
+                    pet = "thunderbird";
+                }
+                if (feels == "feathery" && likes == "alone" && eats == "everything") {
+                    pet = "vulture";
+                }
+
+
+                //Create text to tell user about pet
                 let output = "";
+
                 output += `<p>Your pet is a: ${pet}</p>`;
+                output += `<p>Your pets name is: ${names}</p>`;
                 output += `<p>Your pet feels: ${feels}</p>`;
                 output += `<p>Your pet likes to be: ${likes}</p>`;
                 output += `<p>Your pet likes to eat: ${eats}</p>`;
-                $("#output").html(output);
+
+                if (eats == "meat") {
+                    output += `<p>Meet ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you wanted!  ${names} is a ${pet}, watch your hands when feeding ${names}!</p>`;
+                } else if (eats == "plants") {
+                    output += `<p>Meet ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you wanted!  ${names} is a ${pet}, better stock up on veggies!</p>`;
+                } else if (eats == "everything") {
+                    output += `<p>Meet ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you wanted!  ${names} is a ${pet}, anytime is munchie time for ${names}!</p>`;
+                } else {
+                    output += `<p>Meet ${names}!  ${names} is ${feels}, likes to be ${likes} and eats ${eats}, just like you wanted!  ${names} is a ${pet}!</p>`;
+                }
+
+
+                $('#output').html(output);
 
                 //load pic of pet
                 $('#pet').load(`includes/content.html #${pet}`);
-                //$('#pet').load('includes/content.html #cute-kitten');
+                //$('#pet').load('includes/content.html #bad-dog');
+
+                $("button").click(function () {
+                    location.reload(true);
+                });
 
                 e.preventDefault();//no need to submit as you'll be doing AJAX on this page
 
@@ -73,23 +178,33 @@
             <p>Please choose how you would like your pet to feel:</p>
             <input type="radio" name="feels" value="fluffy" required="required"> fluffy <br />
             <input type="radio" name="feels" value="scaly"> scaly <br />
+            <input type="radio" name="feels" value="feathery"> feathery <br />
         </div>
         <div id="pet_likes">
             <h3>Likes</h3>
             <p>Please tell us what your pet will like:</p>
             <input type="radio" name="likes" value="petted" required="required"> to be petted <br />
             <input type="radio" name="likes" value="ridden"> to be ridden <br />
+            <input type="radio" name="likes" value="alone"> to be left alone <br />
         </div>
         <div id="pet_eats">
             <h3>Eats</h3>
             <p>Please tell us what your pet likes to eat:</p>
-            <input type="radio" name="eats" value="carrots" required="required"> carrots <br />
-            <input type="radio" name="eats" value="pets"> other people's pets <br />
+            <input type="radio" name="eats" value="plants" required="required"> Plants <br />
+            <input type="radio" name="eats" value="meat"> Meat <br />
+            <input type="radio" name="eats" value="everything"> Everything <br />
+        </div>
+        </div>
+        <div id="pet_name">
+            <h3>Name</h3>
+            <p>Please tell us what you want to name your pet:</p>
+            <input type="text" name="names" required="required"> <br />
         </div>
 
         <input type="submit" value="submit it!" />
-        <div id="pet">Pic of pet goes here!</div>
+        <div id="pet">Pic of pet goes here.</div>
         <div id="output">Output goes here!</div>
+        <button type="button">Reload page</button>
     </form>
 </body>
 
